@@ -1,7 +1,12 @@
 class Admin::DashboardController < ApplicationController
-
-  http_basic_authenticate_with name: ENV['HTTP_AUTH_NAME'], password: ENV['HTTP_AUTH_PASSWORD']
+  before_action :require_authentication
 
   def show
+  end
+
+  def require_authentication
+    authenticate_or_request_with_http_basic do |username, password|
+      true if username == ENV['ADMIN_USERNAME'] && password == ENV['ADMIN_PASSWORD']
+    end
   end
 end
