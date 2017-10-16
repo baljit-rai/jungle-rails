@@ -132,5 +132,27 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## REVIEWS
+
+puts "Populating hard-coded reviews..."
+
+Review.destroy_all
+
+User.create!({
+  first_name: "Baljit",
+  last_name: "Rai",
+  email: "email@email.com",
+  password: "12345"
+  })
+
+Review.create!({
+  product_id: 1,
+  user_id: 1,
+  description: "OH. EM. GEE. Greatest. Product. Ever.",
+  rating: 5
+})
+
+
+
 
 puts "DONE!"
